@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
-# import folium
+import folium
 #
 #
 # #####################code for model############################
