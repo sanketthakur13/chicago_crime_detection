@@ -593,25 +593,25 @@ def main():
         st.pyplot(fig)
 
 
-        st.title("Chicago District Map")
+        # st.title("Chicago District Map")
 
-        # Coordinates for Chicago
-        chicago_coords = [41.8781, -87.6298]
+        # # Coordinates for Chicago
+        # chicago_coords = [41.8781, -87.6298]
     
-        # Create a map centered around Chicago
-        chicago_map = folium.Map(location=chicago_coords, zoom_start=10)
+        # # Create a map centered around Chicago
+        # chicago_map = folium.Map(location=chicago_coords, zoom_start=10)
     
-        # Add district names to the map
-        districts = {
-            "Central": [41.8781, -87.6298],
-            "North Side": [41.9100, -87.6300],
-            "South Side": [41.7700, -87.6300],
-            "West Side": [41.8781, -87.7430]
-        }
+        # # Add district names to the map
+        # districts = {
+        #     "Central": [41.8781, -87.6298],
+        #     "North Side": [41.9100, -87.6300],
+        #     "South Side": [41.7700, -87.6300],
+        #     "West Side": [41.8781, -87.7430]
+        # }
     
-        # Add markers for each district
-        for district, coords in districts.items():
-            folium.Marker(location=coords, popup=district).add_to(chicago_map)
+        # # Add markers for each district
+        # for district, coords in districts.items():
+        #     folium.Marker(location=coords, popup=district).add_to(chicago_map)
 
         # #wordcloud
         # # Filter DataFrame to include only rows where arrest is True
