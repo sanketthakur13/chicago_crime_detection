@@ -2,6 +2,11 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
+import warnings
+
+# Filter out the warnings you want to suppress
+warnings.filterwarnings("ignore")
+
 
 
 
@@ -14,8 +19,7 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
-
-
+#
 df = pd.read_csv('chicago_crime_ml.csv')
 loaded_model = pickle.load(open('chicago_crime_new.sav','rb'))
 
@@ -633,9 +637,6 @@ def main():
 
 
 
-
-        #wordcloud
-        st.write("Wordcloud on the Number of Arrests by Local Description")
         # Filter DataFrame to include only rows where arrest is True
         arrest_true_df = df[df['Arrest'] == 'Yes']
 
@@ -648,8 +649,10 @@ def main():
         # Generate word cloud
         wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
 
-        # Display the generated word cloud image in Streamlit
-        st.image(wordcloud.to_array(), caption='Word Cloud of Location Descriptions with True Arrests')
+        # Display the word cloud using Streamlit
+        st.write("Wordcloud on the Number of Arrests by Local Description")
+        st.image(wordcloud.to_array(), use_column_width=True)
+
 
 if __name__ == '__main__':
     main()
