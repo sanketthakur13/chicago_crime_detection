@@ -593,25 +593,41 @@ def main():
         st.pyplot(fig)
 
 
-        # st.title("Chicago District Map")
+        # Coordinates for the districts
+        district_coordinates = {
+            'Albany Park': (41.9719367, -87.7161739),
+            'Austin': (41.8878759, -87.7648507),
+            'Calumet': (41.7298451, -87.6614974),
+            'Central': (41.8872877, -87.6298607),
+            'Chicago Lawn': (41.7750337, -87.6964405),
+            'Deering': (41.7905421, -87.6187487),
+            'Englewood': (41.7797557, -87.6458838),
+            'Grand Central': (41.9184322, -87.7654629),
+            'Grand Crossing': (41.7635227, -87.595611),
+            'Gresham': (41.8784384, -87.6822285),
+            'Harrison': (41.8731045, -87.6273368),
+            'Jefferson Park': (41.9719367, -87.7161739),
+            'Lincoln': (41.9719367, -87.7161739),
+            'Morgan Park': (41.6903196, -87.6667153),
+            'Near North': (41.9000327, -87.6344975),
+            'Near West': (41.8800656, -87.666716),
+            'New West': (41.9719367, -87.7161739),
+            'Ogden': (41.8964712, -87.6693445),
+            'Shakespeare': (41.9438835, -87.7366844),
+            'South Chicago': (41.739058, -87.551147),
+            'Unknown': None,
+            'Wentworth': (41.7950476, -87.6300638)
+        }
 
-        # # Coordinates for Chicago
-        # chicago_coords = [41.8781, -87.6298]
-    
-        # # Create a map centered around Chicago
-        # chicago_map = folium.Map(location=chicago_coords, zoom_start=10)
-    
-        # # Add district names to the map
-        # districts = {
-        #     "Central": [41.8781, -87.6298],
-        #     "North Side": [41.9100, -87.6300],
-        #     "South Side": [41.7700, -87.6300],
-        #     "West Side": [41.8781, -87.7430]
-        # }
-    
-        # # Add markers for each district
-        # for district, coords in districts.items():
-        #     folium.Marker(location=coords, popup=district).add_to(chicago_map)
+        # Filter out districts with None coordinates
+        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if
+                                coordinates is not None}
+
+        # Create a DataFrame from the dictionary
+        map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
+
+        # Display the map centered on Chicago
+        st.map(map_df)
 
         # #wordcloud
         # # Filter DataFrame to include only rows where arrest is True
