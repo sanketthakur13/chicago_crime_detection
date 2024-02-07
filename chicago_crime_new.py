@@ -2,9 +2,9 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
-import folium
-#
-#
+
+
+
 # #####################code for model############################
 import pandas as pd
 from wordcloud import WordCloud
