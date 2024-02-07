@@ -633,7 +633,7 @@ def main():
         map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
 
         # Display the map centered on Chicago
-        st.map(map_df)
+        # st.map(map_df)
 
 
 
