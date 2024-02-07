@@ -2,9 +2,9 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
-
-
-
+import folium
+#
+#
 # #####################code for model############################
 import pandas as pd
 from wordcloud import WordCloud
@@ -523,7 +523,7 @@ def main():
         st.markdown(page_bg_img, unsafe_allow_html=True)
 
     # Call set_background function with the file path and specified arguments
-    set_background(r'clint-eastwood-dirty-harry.gif', size="cover", repeat="no-repeat",
+    set_background(r'C:\Users\MY PC\Downloads\clint-eastwood-dirty-harry.gif', size="cover", repeat="no-repeat",
                    position="center")
 
     # getting the data
@@ -573,6 +573,7 @@ def main():
 
 
         #EDA
+        st.write("Year Wise Arrests")
         # Convert 'Year' to datetime type
         df['Year'] = pd.to_datetime(df['Year'], format='%Y')
 
@@ -592,8 +593,7 @@ def main():
         # Show the plot in Streamlit
         st.pyplot(fig)
 
-        # Set title for the map
-        st.title('Map of Chicago Districts')
+        st.write("District Map of Chicago")
         # Coordinates for the districts
         district_coordinates = {
             'Albany Park': (41.9719367, -87.7161739),
@@ -619,36 +619,36 @@ def main():
             'Unknown': None,
             'Wentworth': (41.7950476, -87.6300638)
         }
-        
+
         # Filter out districts with None coordinates
-        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if coordinates is not None}
-        
-        # Set title for the map
-        st.title('Map of Chicago Districts')
-        
+        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if
+                                coordinates is not None}
+
+        # Create a DataFrame from the dictionary
+        map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
+
         # Display the map centered on Chicago
-        for district, coordinates in district_coordinates.items():
-            st.map(coordinates)
-            st.write(district)
+        st.map(map_df)
 
 
-        # #wordcloud
-        # # Filter DataFrame to include only rows where arrest is True
-        # arrest_true_df = df[df['Arrest'] == True]
-        #
-        # # Extract LocationDescription column
-        # location_description = arrest_true_df['LocationDescription']
-        #
-        # # Join all location descriptions into a single string
-        # text = ' '.join(location_description)
-        #
-        # # Generate word cloud
-        # wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
-        #
-        # # Display the generated word cloud image in Streamlit
-        # st.image(wordcloud.to_array(), caption='Word Cloud of Location Descriptions with True Arrests')
 
+
+        #wordcloud
+        st.write("Wordcloud on the Number of Arrests by Local Description")
+        # Filter DataFrame to include only rows where arrest is True
+        arrest_true_df = df[df['Arrest'] == 'Yes']
+
+        # Extract LocationDescription column
+        location_description = arrest_true_df['LocationDescription']
+
+        # Join all location descriptions into a single string
+        text = ' '.join(location_description)
+
+        # Generate word cloud
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+
+        # Display the generated word cloud image in Streamlit
+        st.image(wordcloud.to_array(), caption='Word Cloud of Location Descriptions with True Arrests')
 
 if __name__ == '__main__':
     main()
-
