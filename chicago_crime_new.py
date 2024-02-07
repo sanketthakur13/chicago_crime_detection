@@ -619,18 +619,15 @@ def main():
             'Unknown': None,
             'Wentworth': (41.7950476, -87.6300638)
         }
-
+        
         # Filter out districts with None coordinates
-        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if
-                                coordinates is not None}
-
-        # Create a DataFrame from the dictionary
-        map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
-
+        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if coordinates is not None}
+        
+        # Set title for the map
+        st.title('Map of Chicago Districts')
+        
         # Display the map centered on Chicago
-        st.map(map_df)
-
-
+        st.map(district_coordinates.values())
 
 
         # #wordcloud
@@ -648,6 +645,7 @@ def main():
         #
         # # Display the generated word cloud image in Streamlit
         # st.image(wordcloud.to_array(), caption='Word Cloud of Location Descriptions with True Arrests')
+
 
 if __name__ == '__main__':
     main()
