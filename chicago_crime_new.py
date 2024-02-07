@@ -598,60 +598,60 @@ def main():
         # Show the plot in Streamlit
         st.pyplot(fig)
 
-        st.write("District Map of Chicago")
-        # Coordinates for the districts
-        district_coordinates = {
-            'Albany Park': (41.9719367, -87.7161739),
-            'Austin': (41.8878759, -87.7648507),
-            'Calumet': (41.7298451, -87.6614974),
-            'Central': (41.8872877, -87.6298607),
-            'Chicago Lawn': (41.7750337, -87.6964405),
-            'Deering': (41.7905421, -87.6187487),
-            'Englewood': (41.7797557, -87.6458838),
-            'Grand Central': (41.9184322, -87.7654629),
-            'Grand Crossing': (41.7635227, -87.595611),
-            'Gresham': (41.8784384, -87.6822285),
-            'Harrison': (41.8731045, -87.6273368),
-            'Jefferson Park': (41.9719367, -87.7161739),
-            'Lincoln': (41.9719367, -87.7161739),
-            'Morgan Park': (41.6903196, -87.6667153),
-            'Near North': (41.9000327, -87.6344975),
-            'Near West': (41.8800656, -87.666716),
-            'New West': (41.9719367, -87.7161739),
-            'Ogden': (41.8964712, -87.6693445),
-            'Shakespeare': (41.9438835, -87.7366844),
-            'South Chicago': (41.739058, -87.551147),
-            'Unknown': None,
-            'Wentworth': (41.7950476, -87.6300638)
-        }
+        # st.write("District Map of Chicago")
+        # # Coordinates for the districts
+        # district_coordinates = {
+        #     'Albany Park': (41.9719367, -87.7161739),
+        #     'Austin': (41.8878759, -87.7648507),
+        #     'Calumet': (41.7298451, -87.6614974),
+        #     'Central': (41.8872877, -87.6298607),
+        #     'Chicago Lawn': (41.7750337, -87.6964405),
+        #     'Deering': (41.7905421, -87.6187487),
+        #     'Englewood': (41.7797557, -87.6458838),
+        #     'Grand Central': (41.9184322, -87.7654629),
+        #     'Grand Crossing': (41.7635227, -87.595611),
+        #     'Gresham': (41.8784384, -87.6822285),
+        #     'Harrison': (41.8731045, -87.6273368),
+        #     'Jefferson Park': (41.9719367, -87.7161739),
+        #     'Lincoln': (41.9719367, -87.7161739),
+        #     'Morgan Park': (41.6903196, -87.6667153),
+        #     'Near North': (41.9000327, -87.6344975),
+        #     'Near West': (41.8800656, -87.666716),
+        #     'New West': (41.9719367, -87.7161739),
+        #     'Ogden': (41.8964712, -87.6693445),
+        #     'Shakespeare': (41.9438835, -87.7366844),
+        #     'South Chicago': (41.739058, -87.551147),
+        #     'Unknown': None,
+        #     'Wentworth': (41.7950476, -87.6300638)
+        # }
 
-        # Filter out districts with None coordinates
-        district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if
-                                coordinates is not None}
+        # # Filter out districts with None coordinates
+        # district_coordinates = {district: coordinates for district, coordinates in district_coordinates.items() if
+        #                         coordinates is not None}
 
-        # Create a DataFrame from the dictionary
-        map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
+        # # Create a DataFrame from the dictionary
+        # map_df = pd.DataFrame.from_dict(district_coordinates, orient='index', columns=['LAT', 'LON'])
 
-        # Display the map centered on Chicago
+        # # Display the map centered on Chicago
         # st.map(map_df)
 
 
 
-        # Filter DataFrame to include only rows where arrest is True
-        arrest_true_df = df[df['Arrest'] == 'Yes']
+        # # Filter DataFrame to include only rows where arrest is True
+        # arrest_true_df = df[df['Arrest'] == 'Yes']
 
-        # Extract LocationDescription column
-        location_description = arrest_true_df['LocationDescription']
+        # # Extract LocationDescription column
+        # location_description = arrest_true_df['LocationDescription']
 
-        # Join all location descriptions into a single string
-        text = ' '.join(location_description)
+        # # Join all location descriptions into a single string
+        # text = ' '.join(location_description)
 
-        # Generate word cloud
-        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+        # # Generate word cloud
+        # wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
 
-        # Display the word cloud using Streamlit
-        st.write("Wordcloud on the Number of Arrests by Local Description")
-        st.image(wordcloud.to_array(), use_column_width=True)
+        # # Display the word cloud using Streamlit
+        # st.write("Wordcloud on the Number of Arrests by Local Description")
+        # st.image(wordcloud.to_array(), use_column_width=True)
 
 
 if __name__ == '__main__':
