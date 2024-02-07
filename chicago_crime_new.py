@@ -627,7 +627,9 @@ def main():
         st.title('Map of Chicago Districts')
         
         # Display the map centered on Chicago
-        st.map(district_coordinates.values())
+        for district, coordinates in district_coordinates.items():
+            st.map(coordinates)
+            st.write(district)
 
 
         # #wordcloud
