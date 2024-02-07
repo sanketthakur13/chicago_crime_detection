@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
-# import folium
+import folium
 #
 #
 # #####################code for model############################
@@ -523,7 +523,7 @@ def main():
         st.markdown(page_bg_img, unsafe_allow_html=True)
 
     # Call set_background function with the file path and specified arguments
-    set_background(r'clint-eastwood-dirty-harry.gif', size="cover", repeat="no-repeat",
+    set_background(r'C:\Users\MY PC\Downloads\clint-eastwood-dirty-harry.gif', size="cover", repeat="no-repeat",
                    position="center")
 
     # getting the data
@@ -629,6 +629,9 @@ def main():
         # Display the map centered on Chicago
         st.map(map_df)
 
+
+
+
         # #wordcloud
         # # Filter DataFrame to include only rows where arrest is True
         # arrest_true_df = df[df['Arrest'] == True]
@@ -647,3 +650,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
