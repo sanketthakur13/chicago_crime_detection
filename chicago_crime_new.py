@@ -637,21 +637,23 @@ def main():
 
 
 
-        # # Filter DataFrame to include only rows where arrest is True
-        # arrest_true_df = df[df['Arrest'] == 'Yes']
+        # Filter DataFrame to include only rows where arrest is True
+        arrest_true_df = df[df['Arrest'] == 'Yes']
 
-        # # Extract LocationDescription column
-        # location_description = arrest_true_df['LocationDescription']
+        # Extract LocationDescription column
+        location_description = arrest_true_df['LocationDescription']
 
-        # # Join all location descriptions into a single string
-        # text = ' '.join(location_description)
+        # Join all location descriptions into a single string
+        text = ' '.join(location_description)
 
-        # # Generate word cloud
-        # wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
+        # Generate word cloud
+        wordcloud = WordCloud(width=800, height=400, background_color='white').generate(text)
 
-        # # Display the word cloud using Streamlit
-        # st.write("Wordcloud on the Number of Arrests by Local Description")
-        # st.image(wordcloud.to_array(), use_column_width=True)
+        # Display the generated image:
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis("off")
+        plt.show()
+        st.pyplot()
 
 
 if __name__ == '__main__':
