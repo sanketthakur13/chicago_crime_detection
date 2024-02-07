@@ -2,9 +2,9 @@ import numpy as np
 import pickle
 import streamlit as st
 import base64
-import folium
-#
-#
+
+
+
 # #####################code for model############################
 import pandas as pd
 from wordcloud import WordCloud
@@ -14,7 +14,8 @@ import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
-#
+
+
 df = pd.read_csv('chicago_crime_ml.csv')
 loaded_model = pickle.load(open('chicago_crime_new.sav','rb'))
 
